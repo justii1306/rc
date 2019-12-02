@@ -26,6 +26,10 @@ char read(unsigned int i) const;
 void write(unsigned int i, char c);
 char operator[](unsigned int i) const;
 Cref operator[](unsigned int i);
+
+rcstring& toLower();
+int atoi();
+rcstring Left(int n);
 };
 
 struct rcstring::rctext
@@ -187,6 +191,45 @@ rcstring::Cref rcstring::operator[](unsigned int i)
   cout << "Cref rcstring::operator[](unsigned int i)"<<endl;
   check(i);
   return Cref(*this,i);
+}
+
+rcstring& rcstring::toLower()
+{
+    for(int i = 0; (unsigned)i<this->data->size; i++)
+	{
+        if(((unsigned)this->data->s[i] - 'A' < 26)==1)
+            this->data->s[i] = this->data->s[i] | 32;
+        else
+            this->data->s[i] = this->data->s[i];
+    }
+    return *this;
+}
+
+int rcstring::atoi()
+{
+    int res = 0;
+    for (int i = 0; (unsigned)i<this->data->size; ++i)
+	{
+        res = res*10 + this->data->s[i] - '0';
+    }
+    return res;
+}
+
+rcstring rcstring::Left(int n)
+{
+    rcstring temp;
+    temp="";
+    int limit = std::min((unsigned)n, this->data->size);
+    for (int i = 0; (unsigned)i < (unsigned)limit; i++)
+    {
+        temp+=" ";
+    }
+    data = data->detach();
+    for (int i = 0; (unsigned)i<(unsigned)limit; i++)
+	{
+        temp.data->s[i] = this->data->s[i];
+    }
+    return temp;
 }
 
 

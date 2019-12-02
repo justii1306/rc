@@ -21,19 +21,5 @@ d[3]='b';
 cout << d << endl; //aulb15
 d[2]=d[1]=d[0];
 cout << d << endl; //aaab15
-
-rcstring test;
-test = "Ola Ma Psa";
-cout<<"Normal_L: "<<test<<endl;
-cout<<"toLower: "<<test.toLower()<<endl;
-rcstring test2;
-test2 = "1234";
-cout<<"Normal_A: "<<test2<<endl;
-cout<<"atoi + 1: "<<test2.atoi()+1<<endl;
-rcstring test3 = test2.Left(2);
-cout<<"Left: "<<test3<<endl;
-cout<<"Left2: "<<test2.Left(2)<<endl;
-cout<<"Normal_A: "<<test2<<endl;
-
 return 0;
 }
